@@ -65,8 +65,6 @@ dependencies {
     // Hilt
     implementation(libs.hilt.android)
     implementation(libs.androidx.hilt.navigation.compose)
-
-    // Retrofit
     implementation(libs.retrofit)
     implementation(libs.converter.gson)
 
