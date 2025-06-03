@@ -70,7 +70,13 @@ dependencies {
     implementation(libs.androidx.hilt.navigation.compose)
     implementation(libs.retrofit)
     implementation(libs.converter.gson)
+    //Interceptor
+    implementation(libs.okhttp.logging.interceptor)
+
 
     // Coroutines
     implementation(libs.kotlinx.coroutines.android)
+
+    //Coil for image printing
+    implementation(libs.coil.compose)
 }
