@@ -7,6 +7,6 @@ fun MovieDto.toDomain(): Movie {
     return Movie(
         id = id,
         title = title,
-        posterUrl = "https://image.tmdb.org/t/p/w200$posterPath"
+        posterUrl = "https://image.tmdb.org/t/p/w500$posterPath"
     )
 }
