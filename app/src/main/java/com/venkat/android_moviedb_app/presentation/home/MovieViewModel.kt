@@ -17,11 +17,38 @@ class MovieViewModel @Inject constructor(
 ) : ViewModel() {
 
     var movies by mutableStateOf<List<Movie>>(emptyList())
+
+    private set
+
+    var isLoading by mutableStateOf(false)
         private set
 
+    var page = 1
+    var endReached = false
+
     init {
+        loadMovies()
+    }
+
+    fun loadMovies() {
+        if (isLoading || endReached) return
+
         viewModelScope.launch {
-            movies = getPopularMoviesUseCase()
+            isLoading = true
+            val result = getPopularMoviesUseCase(page)
+
+            result.onSuccess { response ->
+                val newMovies = response
+                if (newMovies.isEmpty()) {
+                    endReached = true
+                } else {
+                    movies = movies + newMovies
+                    page++
+                }
+            }.onFailure {
+                // Handle error
+            }
+            isLoading = false
         }
     }
 }

@@ -21,3 +21,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "android-moviedb-app"
 include(":app")
+include(":domain")
