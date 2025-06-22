@@ -89,34 +89,23 @@ fun MovieCard(movie: Movie) {
 
     var visible by remember { mutableStateOf(false) }
 
-    LaunchedEffect(Unit) {
-        visible = true
-    }
-
-    AnimatedVisibility(
-        visible = visible,
-        enter = fadeIn(animationSpec = tween(300)) + slideInVertically(
-            initialOffsetY = { it / 4 } // 25% down
-        )
+    Card(
+        modifier = Modifier
+            .padding(8.dp)
+            .fillMaxWidth()
+            .height(220.dp),
+        elevation = 8.dp
     ) {
-        Card(
-            modifier = Modifier
-                .padding(8.dp)
-                .fillMaxWidth()
-                .height(220.dp),
-            elevation = 8.dp
-        ) {
-            // Your card UI
-            Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                Image(
-                    painter = rememberAsyncImagePainter(movie.posterUrl),
-                    contentDescription = movie.title,
-                    contentScale = ContentScale.Crop,
-                    modifier = Modifier.fillMaxWidth().height(280.dp)
-                )
-            }  // Image, rating, etc.
+        // Your card UI
+        Column(horizontalAlignment = Alignment.CenterHorizontally) {
+            Image(
+                painter = rememberAsyncImagePainter(movie.posterUrl),
+                contentDescription = movie.title,
+                contentScale = ContentScale.Crop,
+                modifier = Modifier.fillMaxWidth().height(280.dp)
+            )
+        }  // Image, rating, etc.
 
-        }
     }
 
 }
